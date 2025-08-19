@@ -33,24 +33,12 @@ def extract_video_id(url: str) -> str:
 def get_transcript(video_id: str, language: str) -> str:
     """Fetches transcript for a given video ID and language."""
     try:
-        ytt_api = YouTubeTranscriptApi()
-
-        languages_to_try = [language]
-        if language != 'en':
-            languages_to_try.append('en')
-
-        # Using the fetch method on an instance, as suggested by the user and the notebook.
-        fetched = ytt_api.fetch(video_id, languages=languages_to_try)
-
-        # The notebook's logic suggests that the returned object has a 'snippets' attribute.
-        transcript_list = fetched.snippets
-        transcript = " ".join(s.text for s in transcript_list)
 
         return transcript
     except TranscriptsDisabled:
         return "Error: Transcripts are disabled for this video."
     except Exception as e:
-        return f"Error: Could not fetch transcript. Details: {e}"
+
 
 @st.cache_data
 def create_rag_chain(youtube_url, language):
