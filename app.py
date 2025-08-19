@@ -79,10 +79,10 @@ def generate_response(vector_store, question: str):
     answer = main_chain.invoke(question)
     return answer
 
-st.title("YouTube RAG Model")
+st.title("Asksutube – AI Q&A for YouTube Videos")
 
 youtube_url = st.text_input("Enter YouTube URL:")
-language = st.text_input("Enter transcript language (e.g., 'en', 'hi'):")
+language = st.text_input("Enter language (en, hi):")
 question = st.text_input("Ask a question about the video:")
 
 if st.button("Get Answer"):
