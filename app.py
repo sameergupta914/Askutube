@@ -33,22 +33,12 @@ def extract_video_id(url: str) -> str:
 def get_transcript(video_id: str, language: str) -> str:
     """Fetches transcript for a given video ID and language."""
     try:
-        transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=[language])
-        transcript = " ".join(d['text'] for d in transcript_list)
+
         return transcript
     except TranscriptsDisabled:
         return "Error: Transcripts are disabled for this video."
     except Exception as e:
-        # Fallback to English if the selected language is not available
-        if language != 'en':
-            try:
-                transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=['en'])
-                transcript = " ".join(d['text'] for d in transcript_list)
-                st.warning(f"Falling back to English transcript as '{language}' is not available.")
-                return transcript
-            except Exception as en_e:
-                return f"Error: Could not fetch transcript in '{language}' or English. Details: {en_e}"
-        return f"Error: {e}"
+
 
 @st.cache_data
 def create_rag_chain(youtube_url, language):
