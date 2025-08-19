@@ -22,16 +22,23 @@ def extract_video_id(url: str) -> str:
     return None
 
 # Function to get transcript
+
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
+
 def get_transcript(video_id: str, language: str):
     try:
-        ytt_api = YouTubeTranscriptApi()
-        transcript_list = ytt_api.fetch(video_id, languages=[language, 'en'])
-        transcript = " ".join(s['text'] for s in transcript_list)
+        # fetch() is the correct method in your version
+        fetched = YouTubeTranscriptApi().fetch(video_id, languages=[language, 'en'])
+
+        # fetched.snippets returns list of FetchedTranscriptSnippet objects
+        transcript = " ".join(s.text for s in fetched.snippets)
         return transcript
+
     except TranscriptsDisabled:
         return "No captions available for this video."
     except Exception as e:
         return f"Error: {e}"
+
 
 # Function to create vector store
 def create_vector_store(transcript: str):
