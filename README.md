@@ -4,7 +4,7 @@ AskSutube is an AI-powered web app that allows users to ask questions about any 
 It leverages Retrieval-Augmented Generation (RAG) with LangChain, OpenAI embeddings, and FAISS to retrieve relevant transcript chunks and generate precise answers with GPT-4o-mini.
 The app is deployed on Streamlit with a modern UI and robust error handling for a smooth user experience.
 
-Live link- https://sameergupta914-askutube-app-84fign.streamlit.app/
+Live link- https://asksutube.streamlit.app/
 
 🚀 Features
 
