@@ -1,4 +1,4 @@
-youtube-transcript-api
+youtube-transcript-api>=0.6.2
 langchain-community
 langchain-openai
 faiss-cpu
