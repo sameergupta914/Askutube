@@ -1,9 +1,9 @@
 youtube-transcript-api>=0.6.2
-langchain-community
-langchain-openai
-faiss-cpu
-tiktoken
-python-dotenv
-streamlit
-langchain
-langchain-core
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-openai>=0.2.0
+langchain-core>=0.3.0
+faiss-cpu>=1.7.4
+tiktoken>=0.7.0
+python-dotenv>=1.0.0
+streamlit>=1.38.0
